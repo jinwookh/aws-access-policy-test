@@ -3,13 +3,17 @@
  */
 package aws.access.policy.test;
 
+import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSClient;
 
-public class S3AccessPolicyTest {
+public class SNSAccessPolicyTest {
     public static void main(String[] args) {
-        AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient();
-        s3.putObject("bucket1", "hello", "content");
+        AmazonSNS snsClient = new AmazonSNSClient();
+        snsClient.publish("topic", "hello");
     }
 }
